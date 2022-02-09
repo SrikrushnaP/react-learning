@@ -3,7 +3,7 @@ import Header from './components/Header';
 
 function App() {
 
-  const title = 'Blog post';
+  const title = 'Feedback UI';
   const body = 'This is my blog post';
 
   return (<>
