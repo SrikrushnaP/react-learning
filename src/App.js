@@ -1,16 +1,20 @@
+import { useState } from 'react';
 import './App.css';
+import FeedbackStats from './components/FeedbackStats';
+import FeedbackList from './components/FeedbackList';
 import Header from './components/Header';
+
+import FeedbackData from './data/FeedbackData';
 
 function App() {
 
-  const title = 'Feedback UI';
-  const body = 'This is my blog post';
+  const [feedback, setFeedback] = useState(FeedbackData);
 
   return (<>
-    <Header text={title}/>
+    <Header />
     <div className="container">
-      <h1>{title.toUpperCase()}</h1>
-      <p>{body}</p>
+      <FeedbackStats feedback={feedback}/>
+      <FeedbackList feedback={feedback}/>
     </div>
   </>);
 }
