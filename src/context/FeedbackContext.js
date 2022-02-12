@@ -3,6 +3,7 @@ import { createContext, useState, useEffect } from 'react'
 const FeedbackContext = createContext()
 
 export const FeedbackProvider = ({children}) => {
+  const [isLoading, setIsLoading] = useState(false)
     const [feedback, setFeedback] = useState([])
     const [feedbackEdit, setFeedbackEdit] = useState({
       item: {},
@@ -10,7 +11,9 @@ export const FeedbackProvider = ({children}) => {
     })
 
     useEffect(() => {
+      setIsLoading(true)
       fetchFeedback()
+      setIsLoading(false)
     }, [])
   
     // Fetch feedback
@@ -74,7 +77,8 @@ export const FeedbackProvider = ({children}) => {
             deleteFeedback,
             editFeedback,
             feedbackEdit,
-            updateFeedback
+            updateFeedback,
+            isLoading
         }}>{children}</FeedbackContext.Provider>
       )
 
